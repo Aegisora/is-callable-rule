@@ -128,6 +128,13 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => 'is_callable_rule',
                 ],
             ],
+            'context value - resource' => [
+                'context' => Context::create(tmpfile()),
+                'expectedResult' => [
+                    'isValid' => false,
+                    'failedRuleCode' => 'is_callable_rule',
+                ],
+            ],
         ];
     }
 
