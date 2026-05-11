@@ -2,6 +2,7 @@
 
 namespace Aegisora\Rules\Tests\Unit;
 
+use Aegisora\RuleContract\Models\Context;
 use Aegisora\RuleContract\Models\Result;
 use Aegisora\RuleContract\RuleInterface;
 use Aegisora\Rules\IsCallableRule;
@@ -21,6 +22,35 @@ class IsCallableRuleTest extends TestCase
     public function testCreate(): void
     {
         self::assertInstanceOf(RuleInterface::class, IsCallableRule::create());
+    }
+
+    /**
+     * @dataProvider getTestValidateProvidedData
+     */
+    public function testValidate(
+        Context $context,
+        array $expectedResult
+    ): void {
+        self::assertActualResultEqualsExpected(
+            $this->rule->validate($context),
+            $expectedResult
+        );
+    }
+
+    public static function getTestValidateProvidedData(): array
+    {
+        return [
+            'context value - callable' => [
+                'context' => Context::create(
+                    static function (): void {
+                    }
+                ),
+                'expectedResult' => [
+                    'isValid' => true,
+                    'failedRuleCode' => null,
+                ],
+            ],
+        ];
     }
 
     private static function assertActualResultEqualsExpected(
