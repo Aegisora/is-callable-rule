@@ -2,6 +2,7 @@
 
 namespace Aegisora\Rules\Tests\Unit;
 
+use Aegisora\RuleContract\RuleInterface;
 use Aegisora\Rules\IsCallableRule;
 use PHPUnit\Framework\TestCase;
 
@@ -14,5 +15,10 @@ class IsCallableRuleTest extends TestCase
         parent::setUp();
 
         $this->rule = new IsCallableRule();
+    }
+
+    public function testCreate(): void
+    {
+        self::assertInstanceOf(RuleInterface::class, IsCallableRule::create());
     }
 }

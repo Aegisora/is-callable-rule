@@ -8,7 +8,7 @@ use Aegisora\RuleContract\Rule;
 
 class IsCallableRule extends Rule
 {
-    private static function create(): self
+    public static function create(): self
     {
         return new self();
     }
