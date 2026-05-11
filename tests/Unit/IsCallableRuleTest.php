@@ -65,7 +65,7 @@ class IsCallableRuleTest extends TestCase
                 ],
             ],
             'context value - negative integer' => [
-                'context' => Context::create(1),
+                'context' => Context::create(-1),
                 'expectedResult' => [
                     'isValid' => false,
                     'failedRuleCode' => 'is_callable_rule',
