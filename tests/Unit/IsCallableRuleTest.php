@@ -7,6 +7,7 @@ use Aegisora\RuleContract\Models\Result;
 use Aegisora\RuleContract\RuleInterface;
 use Aegisora\Rules\IsCallableRule;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class IsCallableRuleTest extends TestCase
 {
@@ -115,6 +116,13 @@ class IsCallableRuleTest extends TestCase
             ],
             'context value - not empty array' => [
                 'context' => Context::create([1,]),
+                'expectedResult' => [
+                    'isValid' => false,
+                    'failedRuleCode' => 'is_callable_rule',
+                ],
+            ],
+            'context value - object' => [
+                'context' => Context::create(new stdClass()),
                 'expectedResult' => [
                     'isValid' => false,
                     'failedRuleCode' => 'is_callable_rule',
