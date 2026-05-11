@@ -99,6 +99,13 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => 'is_callable_rule',
                 ],
             ],
+            'context value - not empty string' => [
+                'context' => Context::create('fooo'),
+                'expectedResult' => [
+                    'isValid' => false,
+                    'failedRuleCode' => 'is_callable_rule',
+                ],
+            ],
         ];
     }
 
