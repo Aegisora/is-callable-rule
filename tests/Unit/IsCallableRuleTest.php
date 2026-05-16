@@ -64,6 +64,13 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => null,
                 ],
             ],
+            'context value - global standard function name' => [
+                'context' => Context::create('trim'),
+                'expectedResult' => [
+                    'isValid' => true,
+                    'failedRuleCode' => null,
+                ],
+            ],
             'context value - zero integer' => [
                 'context' => Context::create(0),
                 'expectedResult' => [
