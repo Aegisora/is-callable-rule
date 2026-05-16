@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1778922510">
-  <project timestamp="1778922510">
+<coverage generated="1778922649">
+  <project timestamp="1778922649">
     <file name="/home/runner/work/is-callable-rule/is-callable-rule/src/IsCallableRule.php">
       <class name="Aegisora\Rules\IsCallableRule" namespace="global">
         <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
