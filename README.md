@@ -112,6 +112,29 @@ Creates a new instance of `IsCallableRule`.
 
 ---
 
+## ⚠️ Validation Rules
+
+Validation internally uses PHP native function:
+
+```php
+is_callable($value)
+```
+
+Additionally, the rule explicitly supports:
+
+```php
+$value instanceof Closure
+```
+
+The rule returns:
+
+- valid `Result` → if value is callable
+- invalid `Result` → if value is not callable
+
+No exceptions are thrown for unsupported types.
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
