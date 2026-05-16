@@ -83,8 +83,6 @@ if ($result->isValid()) {
 }
 ```
 
----
-
 ### ❌ Invalid value example
 
 ```php
