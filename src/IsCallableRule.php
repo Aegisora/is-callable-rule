@@ -30,6 +30,6 @@ class IsCallableRule extends Rule
             return true;
         }
 
-        return is_callable($value, true);
+        return is_callable($value);
     }
 }
