@@ -80,6 +80,15 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => null,
                 ],
             ],
+            'context value - object method callable' => [
+                'context' => Context::create(
+                    [new self(), 'instanceCallableMethod']
+                ),
+                'expectedResult' => [
+                    'isValid' => true,
+                    'failedRuleCode' => null,
+                ],
+            ],
             'context value - zero integer' => [
                 'context' => Context::create(0),
                 'expectedResult' => [
@@ -168,6 +177,11 @@ class IsCallableRuleTest extends TestCase
     }
 
     public static function staticCallableMethod(): string
+    {
+        return 'ok';
+    }
+
+    public function instanceCallableMethod(): string
     {
         return 'ok';
     }
