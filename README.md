@@ -102,6 +102,16 @@ if ($result->isValid()) {
 
 ---
 
+## 🧩 Factory Method
+
+```php
+IsCallableRule::create();
+```
+
+Creates a new instance of `IsCallableRule`.
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
