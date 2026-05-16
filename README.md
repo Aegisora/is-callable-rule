@@ -32,6 +32,36 @@ composer require aegisora/is-callable-rule
 
 ---
 
+## 🚀 Core Concept
+
+This package performs callable validation:
+
+- accepts a value via `Context`
+- checks whether the value is callable
+- returns a standardized `Result`
+
+Supported values:
+
+```php
+function () {}
+static function () {}
+'trim'
+[$object, 'method']
+[SomeClass::class, 'method']
+```
+
+Unsupported values:
+
+```php
+null
+true
+123
+'not_existing_function'
+new stdClass()
+```
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
