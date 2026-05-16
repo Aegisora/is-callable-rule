@@ -10,6 +10,19 @@ The package is built on top of `aegisora/rule-contract` and follows its validati
 
 ---
 
+## ✨ Features
+
+- 🔹 Minimalistic implementation with no extra dependencies
+- 🔹 Strict callable validation using `is_callable`
+- 🔹 Fully compatible with Aegisora validation pipeline
+- 🔹 Clear `Context → Result` flow
+- 🔹 No raw booleans — only structured `Result`
+- 🔹 Safe execution via base `Rule` abstraction
+- 🔹 Convenient static factory method (`create`)
+- 🔹 Lightweight and predictable behavior
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
