@@ -71,6 +71,15 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => null,
                 ],
             ],
+            'context value - static method array callable' => [
+                'context' => Context::create(
+                    [self::class, 'staticCallableMethod']
+                ),
+                'expectedResult' => [
+                    'isValid' => true,
+                    'failedRuleCode' => null,
+                ],
+            ],
             'context value - zero integer' => [
                 'context' => Context::create(0),
                 'expectedResult' => [
@@ -156,6 +165,11 @@ class IsCallableRuleTest extends TestCase
                 ],
             ],
         ];
+    }
+
+    public static function staticCallableMethod(): string
+    {
+        return 'ok';
     }
 
     private static function assertActualResultEqualsExpected(
