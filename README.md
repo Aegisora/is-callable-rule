@@ -13,7 +13,8 @@ The package is built on top of `aegisora/rule-contract` and follows its validati
 ## ✨ Features
 
 - 🔹 Minimalistic implementation with no extra dependencies
-- 🔹 Strict callable validation using `is_callable`
+- 🔹 Strict callable validation using PHP native `is_callable`
+- 🔹 Supports anonymous functions (`Closure`)
 - 🔹 Fully compatible with Aegisora validation pipeline
 - 🔹 Clear `Context → Result` flow
 - 🔹 No raw booleans — only structured `Result`
