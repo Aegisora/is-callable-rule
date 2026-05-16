@@ -1,8 +1,153 @@
-# Simple component template
+# Aegisora Is Callable Rule
 
 ![Code Coverage Badge](./badge.svg)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 ![PHPStan Badge](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg?style=flat)
+
+Is Callable Rule provides a simple and strict **callable validation** for the Aegisora ecosystem.
+
+The package is built on top of `aegisora/rule-contract` and follows its validation architecture, ensuring predictable and safe behavior.
+
+---
+
+## ✨ Features
+
+- 🔹 Minimalistic implementation with no extra dependencies
+- 🔹 Strict callable validation using PHP native `is_callable`
+- 🔹 Supports anonymous functions (`Closure`)
+- 🔹 Fully compatible with Aegisora validation pipeline
+- 🔹 Clear `Context → Result` flow
+- 🔹 No raw booleans — only structured `Result`
+- 🔹 Safe execution via base `Rule` abstraction
+- 🔹 Convenient static factory method (`create`)
+- 🔹 Lightweight and predictable behavior
+
+---
+
+## 📦 Installation
+
+```shell
+composer require aegisora/is-callable-rule
+```
+
+---
+
+## 🚀 Core Concept
+
+This package performs callable validation:
+
+- accepts a value via `Context`
+- checks whether the value is callable
+- returns a standardized `Result`
+
+Supported values:
+
+```php
+function () {}
+static function () {}
+'trim'
+[$object, 'method']
+[SomeClass::class, 'method']
+```
+
+Unsupported values:
+
+```php
+null
+true
+123
+'not_existing_function'
+new stdClass()
+```
+
+---
+
+## 🏗️ Basic Usage
+
+### ✅ Validate callable value
+
+```php
+use Aegisora\Rules\IsCallableRule;
+use Aegisora\RuleContract\Models\Context;
+
+$result = IsCallableRule::create()->validate(
+    Context::create(function () {
+        return true;
+    })
+);
+
+if ($result->isValid()) {
+    // value is callable
+} else {
+    // value is not callable
+}
+```
+
+### ❌ Invalid value example
+
+```php
+use Aegisora\Rules\IsCallableRule;
+use Aegisora\RuleContract\Models\Context;
+
+$result = IsCallableRule::create()->validate(
+    Context::create('not-callable')
+);
+
+if ($result->isValid()) {
+    // will not happen
+} else {
+    // validation failed
+}
+```
+
+---
+
+## 🧩 Factory Method
+
+```php
+IsCallableRule::create();
+```
+
+Creates a new instance of `IsCallableRule`.
+
+---
+
+## ⚠️ Validation Rules
+
+Validation internally uses PHP native function:
+
+```php
+is_callable($value)
+```
+
+Additionally, the rule explicitly supports:
+
+```php
+$value instanceof Closure
+```
+
+The rule returns:
+
+- valid `Result` → if value is callable
+- invalid `Result` → if value is not callable
+
+No exceptions are thrown for unsupported types.
+
+---
+
+## 🏛️ Architecture
+
+This package relies on `aegisora/rule-contract`.
+
+Validation flow:
+
+1. `validate()` is called
+2. `Context` is passed
+3. `executeValidate()` is executed
+4. `is_callable()` check is performed
+5. A `Result` is returned
+
+All logic is encapsulated within the base `Rule` abstraction.
 
 ---
 
