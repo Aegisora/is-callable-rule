@@ -23,6 +23,14 @@ The package is built on top of `aegisora/rule-contract` and follows its validati
 
 ---
 
+## 📦 Installation
+
+```shell
+composer require aegisora/is-callable-rule
+```
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
