@@ -50,6 +50,20 @@ class IsCallableRuleTest extends TestCase
                     'failedRuleCode' => null,
                 ],
             ],
+            'context value - anonymous class with invoke' => [
+                'context' => Context::create(
+                    new class {
+                        public function __invoke(): string
+                        {
+                            return 'ok';
+                        }
+                    }
+                ),
+                'expectedResult' => [
+                    'isValid' => true,
+                    'failedRuleCode' => null,
+                ],
+            ],
             'context value - zero integer' => [
                 'context' => Context::create(0),
                 'expectedResult' => [
