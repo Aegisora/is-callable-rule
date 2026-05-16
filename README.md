@@ -62,6 +62,48 @@ new stdClass()
 
 ---
 
+## 🏗️ Basic Usage
+
+### ✅ Validate callable value
+
+```php
+use Aegisora\Rules\IsCallableRule;
+use Aegisora\RuleContract\Models\Context;
+
+$result = IsCallableRule::create()->validate(
+    Context::create(function () {
+        return true;
+    })
+);
+
+if ($result->isValid()) {
+    // value is callable
+} else {
+    // value is not callable
+}
+```
+
+---
+
+### ❌ Invalid value example
+
+```php
+use Aegisora\Rules\IsCallableRule;
+use Aegisora\RuleContract\Models\Context;
+
+$result = IsCallableRule::create()->validate(
+    Context::create('not-callable')
+);
+
+if ($result->isValid()) {
+    // will not happen
+} else {
+    // validation failed
+}
+```
+
+---
+
 ## ⚖️ License
 
 This package is open-source and licensed under the MIT License. See the LICENSE for details.
