@@ -41,10 +41,9 @@ class IsCallableRuleTest extends TestCase
     public static function getTestValidateProvidedData(): array
     {
         return [
-            'context value - callable' => [
+            'context value - closure' => [
                 'context' => Context::create(
-                    static function (): void {
-                    }
+                    static fn (): string => 'ok'
                 ),
                 'expectedResult' => [
                     'isValid' => true,
